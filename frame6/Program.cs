@@ -158,13 +158,13 @@ class Program
 
     public static void CombineAudioAndVideo(string videoPath, string audioPath, string outputPath)
     {
-        var video = FFMpegArguments.FromFileInput(videoPath)
-                                   .AddFileInput(audioPath)
-                                   .OutputToFile(outputPath, true, options => options
-                                       .WithVideoCodec("copy")
-                                       .WithAudioCodec("aac")
-                                       .WithCustomArgument("-shortest"))
-                                   .ProcessSynchronously();
+            var video = FFMpegArguments.FromFileInput(videoPath)
+                                       .AddFileInput(audioPath)
+                                       .OutputToFile(outputPath, true, options => options
+                                           .WithVideoCodec("copy")
+                                           .WithAudioCodec("aac")
+                                           .WithCustomArgument("-shortest"))
+                                       .ProcessSynchronously();
     }
 
 
