@@ -158,7 +158,13 @@ class Program
 
     public static void CombineAudioAndVideo(string videoPath, string audioPath, string outputPath)
     {
-            var video = FFMpegArguments.FromFileInput(videoPath)
+        FFMpegCore.GlobalFFOptions.Configure(options =>
+        {
+            options.BinaryFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ffmpeg");
+        });
+
+
+        var video = FFMpegArguments.FromFileInput(videoPath)
                                        .AddFileInput(audioPath)
                                        .OutputToFile(outputPath, true, options => options
                                            .WithVideoCodec("copy")
